@@ -1,6 +1,15 @@
-import React, { useState, memo, useEffect } from "react";
-import "../cssStyles/Frameworks.scss";
-import { Checkbox, Button, Select, FormControl, InputLabel, MenuItem, Box, Container, makeStyles, FormControlLabel } from '@material-ui/core';
+import React, { useState, useEffect } from "react";
+import { 
+  Checkbox, 
+  Button, 
+  Select, 
+  FormControl, 
+  InputLabel, 
+  MenuItem, 
+  Box, 
+  Container, 
+  makeStyles, 
+  FormControlLabel } from '@material-ui/core';
 
 const useStyles = makeStyles((theme) => ({
  
@@ -21,7 +30,6 @@ const useStyles = makeStyles((theme) => ({
 
   formControl: {
     padding: theme.spacing(1),
-    //minWidth: 120,
   },
   
   card: {
@@ -60,7 +68,7 @@ const getData = () => {
 
 ///////////////////////////////////render del singolo item
 
-export const SingleItem = memo(({item, onChange, onClick}) => {
+export const SingleItem = ({item, onChange, onClick}) => {
 
   return(
 
@@ -75,20 +83,14 @@ export const SingleItem = memo(({item, onChange, onClick}) => {
         {item.verificato ? 'Toggle' : 'Done'}
       </Button>
 
-    </Box>
-    
-    /*<label className='single-item' >
-      {item.label} 
-      <input type='checkbox' checked={item.value} onChange={onChange} disabled={item.verificato} />
-      <button className={item.verificato ? 'verificato' : 'nonVerificato'} onClick={onClick} >Toggle Done</button>
-    </label>*/
+    </Box>   
     
   )
-})
+}
 
 ///////////////////////////////////render del seleziona/deseleziona tutto
 
-export const ToggleCheck = memo(({ sel_desel, onChange})=> {
+export const ToggleCheck = ({ sel_desel, onChange})=> {
 
   return(
 
@@ -96,22 +98,19 @@ export const ToggleCheck = memo(({ sel_desel, onChange})=> {
     control={<Checkbox checked={sel_desel} onChange={onChange}  />}
     label="Toggle All"
     />
-    /*<label>
-      Toggle All
-      <input type='checkbox' checked={sel_desel} onChange={onChange}/>
-    </label>*/
+
   )
 
-})
+}
 
 ///////////////////////////////////filtro
 
-export const FilterList = memo(({ filter_value , onChange}) => {
+export const FilterList = ({ filter_value , onChange}) => {
 
   return(
 
     <FormControl className={useStyles().formControl}>
-    <InputLabel id="demo-simple-select-autowidth-label">Filtra</InputLabel>
+    <InputLabel component={'span'} id="demo-simple-select-autowidth-label">Filtra</InputLabel>
     <Select
       value={filter_value ? filter_value : 'tutti'}
       onChange={onChange}
@@ -126,18 +125,9 @@ export const FilterList = memo(({ filter_value , onChange}) => {
       <MenuItem value={'completati'}>Completati</MenuItem>
     </Select>
     </FormControl>
-   
-      /*<select onChange={onChange} value={filter_value ? filter_value : 'tutti'}>
-        <option value="tutti">Tutti</option>
-        <option value="soloOrig">Solo Originali</option>
-        <option value="nuovi">Nuovi</option>
-        <option value="selezionati">Selezionati</option>
-        <option value="nonSel">Non Selezionati</option>
-        <option value="completati">Completati</option>
-      </select>*/
-      
+       
   )
-})
+}
 
 export default function Frameworks(){
 
@@ -319,17 +309,7 @@ export default function Frameworks(){
       </Container>
 
     </React.Fragment>
-    /*<div className="Frameworks">
 
-      <ToggleCheck sel_desel={toggleAll} onChange={toggleItems}/>
-   
-      {listItems.map(renderItems)}
-
-      <FilterList filter_value={filtriAttivi} onChange={addFilter}/>
-
-      <button disabled={filtriAttivi === 'nonSel' || filtriAttivi === 'completati' ? true : false} onClick={aggiungiItem}>Aggiungi item {filtriAttivi}</button>
-     
-    </div>*/
   );
 }
 

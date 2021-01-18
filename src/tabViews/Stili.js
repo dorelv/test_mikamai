@@ -1,11 +1,15 @@
 
 import React from 'react';
-import Card from '@material-ui/core/Card';
-import CardContent from '@material-ui/core/CardContent';
-import Grid from '@material-ui/core/Grid';
-import Typography from '@material-ui/core/Typography';
-import { makeStyles, createMuiTheme, MuiThemeProvider } from '@material-ui/core/styles';
-import Container from '@material-ui/core/Container';
+
+import { 
+  Container, 
+  Typography, 
+  Grid, 
+  CardContent, 
+  Card, 
+  makeStyles, 
+  createMuiTheme, 
+  MuiThemeProvider } from '@material-ui/core';
 
 const theme = createMuiTheme({
     breakpoints: {
@@ -38,13 +42,12 @@ const useStyles = makeStyles((theme) => ({
     flex: 1,
     justifyContent: 'space-between',
     flexDirection: 'column',
-    alignItems: 'center', 
+    alignItems: 'center'
   },
 
 }));
 
 const cards = [
-
     {id: 1, text: "Lorem Ipsum is simply dummy text of the printing and typesetting industry."},
     {id: 2, text: "It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. And more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum."},
     {id: 3, text: "It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum."},

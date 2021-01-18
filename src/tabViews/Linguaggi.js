@@ -1,6 +1,10 @@
-import React, { useState, memo } from "react";
+import React, { useState } from "react";
 
-import { TextField, Typography, Container, makeStyles } from '@material-ui/core';
+import { 
+  TextField, 
+  Typography, 
+  Container, 
+  makeStyles } from '@material-ui/core';
 
 const useStyles = makeStyles((theme) => ({
 
@@ -31,7 +35,7 @@ const verificaReg = (val) => {
 
 /////////////////////////////////////////Esercizio 1
 
-export const Esercizio1 = memo(({input_val}) => {
+export const Esercizio1 = ({input_val}) => {
 
   return(
 
@@ -40,7 +44,7 @@ export const Esercizio1 = memo(({input_val}) => {
     </Typography>
 
   )
-})
+}
 
 /////////////////////////////////////////Esercizio 2
 
@@ -71,7 +75,7 @@ export const Esercizio2 = ({input_val}) => {
 
 /////////////////////////////////////////Esercizio 3
 
-export const Esercizio3 = memo(({input_val}) => {
+export const Esercizio3 = ({input_val}) => {
 
   var shift_val = input_val.split('').map((sep) => {
 
@@ -88,11 +92,11 @@ export const Esercizio3 = memo(({input_val}) => {
     </Typography>
 
   )
-})
+}
 
 /////////////////////////////////////////Esercizio 4
 
-export const Esercizio4 = memo(({input_val}) => {
+export const Esercizio4 = ({input_val}) => {
 
   input_val = input_val.replace(/[\W_]+/g, "").toLowerCase()
 
@@ -107,11 +111,11 @@ export const Esercizio4 = memo(({input_val}) => {
     </Typography>
 
   )
-})
+}
 
 ////////////////////////////////////////////Esercizio 5
 
-  export const Esercizio5 = memo(({input_val, obiettivo})=> {
+  export const Esercizio5 = ({input_val, obiettivo})=> {
 
   const is_present = input_val.toLowerCase().includes(obiettivo.toLowerCase())
 
@@ -123,9 +127,7 @@ export const Esercizio4 = memo(({input_val}) => {
 
   )
 
-   
-
-})
+}
 
 export default function Linguaggi(){
 
@@ -137,7 +139,6 @@ export default function Linguaggi(){
     const upper_val = target.value.toUpperCase() 
     setinput_val(upper_val)
   }
-
 
   return (
 
