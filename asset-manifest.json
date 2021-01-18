@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/test_mikamai/static/css/main.35d45f2e.chunk.css",
+    "main.js": "/test_mikamai/static/js/main.592eed15.chunk.js",
+    "main.js.map": "/test_mikamai/static/js/main.592eed15.chunk.js.map",
+    "runtime-main.js": "/test_mikamai/static/js/runtime-main.448b93e9.js",
+    "runtime-main.js.map": "/test_mikamai/static/js/runtime-main.448b93e9.js.map",
+    "static/js/2.f0f147d4.chunk.js": "/test_mikamai/static/js/2.f0f147d4.chunk.js",
+    "static/js/2.f0f147d4.chunk.js.map": "/test_mikamai/static/js/2.f0f147d4.chunk.js.map",
+    "static/js/3.c6a6087d.chunk.js": "/test_mikamai/static/js/3.c6a6087d.chunk.js",
+    "static/js/3.c6a6087d.chunk.js.map": "/test_mikamai/static/js/3.c6a6087d.chunk.js.map",
+    "index.html": "/test_mikamai/index.html",
+    "static/css/main.35d45f2e.chunk.css.map": "/test_mikamai/static/css/main.35d45f2e.chunk.css.map",
+    "static/js/2.f0f147d4.chunk.js.LICENSE.txt": "/test_mikamai/static/js/2.f0f147d4.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.448b93e9.js",
+    "static/js/2.f0f147d4.chunk.js",
+    "static/css/main.35d45f2e.chunk.css",
+    "static/js/main.592eed15.chunk.js"
+  ]
+}
