@@ -1,158 +1,132 @@
 import React, { useState } from "react";
 
-import { 
-  TextField, 
-  Typography, 
-  Container, 
-  makeStyles } from '@material-ui/core';
+import {
+  TextField,
+  Typography,
+  Container,
+  makeStyles,
+} from "@material-ui/core";
 
 const useStyles = makeStyles((theme) => ({
-
-  containter: {
-    alignItems: 'flex-start', 
-    display: 'flex',
+  flexContainer: {
+    alignItems: "flex-start",
+    display: "flex",
     flex: 1,
-    justifyContent: 'flex-start',
-    margin: theme.spacing(1),
-    flexDirection: 'column'
+    justifyContent: "flex-start",
+    flexDirection: "column",
   },
 
   labelStyle: {
     marginLeft: theme.spacing(1),
-  }
-
+  },
 }));
 ///////////////////////////////////////////qui verifico se i valori sono delle lettere
 
-const verificaReg = (val) => {
+const regexControl = (val) => {
+  var myReg = /[^a-z]/gi;
+  var isValid = !myReg.test(val);
 
-  var my_reg  = /[^a-z]/gi; 
-  var is_valid = !(my_reg.test(val))
-
-  return is_valid
-
-}
+  return isValid;
+};
 
 /////////////////////////////////////////Esercizio 1
 
-export const Esercizio1 = ({input_val}) => {
+const Esercizio1 = ({ inputVal }) => {
+  var upperVal = inputVal
+    .split("")
+    .map((sep) => {
+      return sep.toUpperCase();
+    })
+    .join("");
 
-  return(
-
+  return (
     <Typography className={useStyles().labelStyle} variant="body2">
-      Esercizio 1: {input_val}
+      Esercizio 1: {upperVal}
     </Typography>
-
-  )
-}
+  );
+};
 
 /////////////////////////////////////////Esercizio 2
 
-export const Esercizio2 = ({input_val}) => {
-  
-  input_val = input_val.replace(/[\W_]+/g, " ") ////qui rimpiazzo i caratteri speciali e i doppi spazzi con uno solo per non perdere il conto delle disparità
-  
-  const swapped_val = input_val.split(' ').map(
-    (sep, limit) => 
-    
-      limit % 2 ?
+const Esercizio2 = ({ inputVal }) => {
+  inputVal = inputVal.replace(/[\W_]+/g, " "); ////qui rimpiazzo i caratteri speciali e i doppi spazzi con uno solo per non perdere il conto delle disparità
 
-        sep.toUpperCase()
-       
-      :
-      
-        sep.toLocaleLowerCase()
-    
-    ).join(' ')
-   
-  return(
+  const swappVal = inputVal
+    .split(" ")
+    .map((sep, limit) =>
+      limit % 2 ? sep.toUpperCase() : sep.toLocaleLowerCase()
+    )
+    .join(" ");
+
+  return (
     <Typography className={useStyles().labelStyle} variant="body2">
-    Esercizio 2: {swapped_val}
+      Esercizio 2: {swappVal}
     </Typography>
-
-  )
-}
+  );
+};
 
 /////////////////////////////////////////Esercizio 3
 
-export const Esercizio3 = ({input_val}) => {
+const Esercizio3 = ({ inputVal }) => {
+  var shiftVal = inputVal
+    .split("")
+    .map((sep) => {
+      var toStr = sep.charCodeAt(0) === 90 ? 65 : sep.charCodeAt(0) + 1;
+      var returnValue = regexControl(sep) ? String.fromCharCode(toStr) : sep;
 
-  var shift_val = input_val.split('').map((sep) => {
+      return returnValue.toLowerCase();
+    })
+    .join("");
 
-    var to_str = sep.charCodeAt(0) === 90 ? 65 : sep.charCodeAt(0) + 1 ///qui verifico che se l'ultima lettera è la Z mi ritorna la lettera A
-    var val_return = verificaReg(sep) ? String.fromCharCode(to_str) : sep
-
-    return val_return.toLowerCase()
-
-  }).join('') 
-
-  return(
+  return (
     <Typography className={useStyles().labelStyle} variant="body2">
-    Esercizio 3: {shift_val}
+      Esercizio 3: {shiftVal}
     </Typography>
-
-  )
-}
+  );
+};
 
 /////////////////////////////////////////Esercizio 4
 
-export const Esercizio4 = ({input_val}) => {
+const Esercizio4 = ({ inputVal }) => {
+  inputVal = inputVal.replace(/[\W_]+/g, "").toLowerCase();
 
-  input_val = input_val.replace(/[\W_]+/g, "").toLowerCase()
-
-  let counted_obj =  input_val.split('').reduce((totObj, singleLetter) => {  
-      totObj[singleLetter] ? totObj[singleLetter]++ : totObj[singleLetter] = 1;
-      return totObj;
+  let countedObj = inputVal.split("").reduce((totObj, singleLetter) => {
+    totObj[singleLetter] ? totObj[singleLetter]++ : (totObj[singleLetter] = 1);
+    return totObj;
   }, {});
-  
-  return(
-    <Typography className={useStyles().labelStyle} variant="body2">
-    Esercizio 4: {JSON.stringify(counted_obj)}
-    </Typography>
 
-  )
-}
+  return (
+    <Typography className={useStyles().labelStyle} variant="body2">
+      Esercizio 4: {JSON.stringify(countedObj)}
+    </Typography>
+  );
+};
 
 ////////////////////////////////////////////Esercizio 5
 
-  export const Esercizio5 = ({input_val, obiettivo})=> {
-
-  const is_present = input_val.toLowerCase().includes(obiettivo.toLowerCase())
-
-  return(
-
-    <Typography className={useStyles().labelStyle} variant="body2">
-    Esercizio 5 (valore da verificare "{obiettivo}"): {JSON.stringify(is_present)}
-    </Typography>
-
-  )
-
-}
-
-export default function Linguaggi(){
-
-  const classes = useStyles();
-
-  const [input_val, setinput_val] = useState('')
-
-  const uppercase = ({target}) => {
-    const upper_val = target.value.toUpperCase() 
-    setinput_val(upper_val)
-  }
+const Esercizio5 = ({ inputVal, goalVal }) => {
+  const isInside = inputVal.toLowerCase().includes(goalVal.toLowerCase());
 
   return (
+    <Typography className={useStyles().labelStyle} variant="body2">
+      Esercizio 5 (valore da verificare "{goalVal}"): {JSON.stringify(isInside)}
+    </Typography>
+  );
+};
 
+export default function Linguaggi() {
+  const classes = useStyles();
+  const [inputVal, setInputVal] = useState("");
+
+  return (
     <React.Fragment>
-
-    <Container className={classes.containter} maxWidth="md" >
-
-      <TextField
+      <Container className={classes.flexContainer} maxWidth="md">
+        <TextField
           id="outlined-full-width"
           label="Javascript functional"
-          style={{ margin: 8 }}
           placeholder="Stringa da elaborare"
-          value={input_val.toLowerCase()}
-          onChange={uppercase}
+          value={inputVal.toLowerCase()}
+          onChange={({ target }) => setInputVal(target.value)}
           fullWidth
           margin="normal"
           InputLabelProps={{
@@ -161,15 +135,12 @@ export default function Linguaggi(){
           variant="outlined"
         />
 
-        <Esercizio1 input_val={input_val}/>
-        <Esercizio2 input_val={input_val}/>
-        <Esercizio3 input_val={input_val}/>
-        <Esercizio4 input_val={input_val}/>
-        <Esercizio5 input_val={input_val} obiettivo={'a'}/>  
-
-    </Container>
-
-  </React.Fragment>
-
+        <Esercizio1 inputVal={inputVal} />
+        <Esercizio2 inputVal={inputVal} />
+        <Esercizio3 inputVal={inputVal} />
+        <Esercizio4 inputVal={inputVal} />
+        <Esercizio5 inputVal={inputVal} goalVal={"a"} />
+      </Container>
+    </React.Fragment>
   );
 }

@@ -1,17 +1,16 @@
+import React from "react";
+import {
+  makeStyles,
+  AppBar,
+  Tabs,
+  Tab,
+  Typography,
+  Box,
+} from "@material-ui/core";
 
-import React from 'react';
-import { 
-    makeStyles,
-    AppBar,
-    Tabs,
-    Tab,
-    Typography,
-    Box
- } from '@material-ui/core';
-
-import Linguaggi from './tabViews/Linguaggi'
-import Frameworks from './tabViews/Frameworks'
-import Stili from './tabViews/Stili'
+import Linguaggi from "./tabViews/Linguaggi";
+import Frameworks from "./tabViews/Frameworks";
+import Stylesheets from "./tabViews/Stylesheets";
 
 function TabPanel(props) {
   const { children, value, index } = props;
@@ -25,7 +24,7 @@ function TabPanel(props) {
     >
       {value === index && (
         <Box p={3}>
-          <Typography component={'span'}>{children}</Typography>
+          <Typography component="span">{children}</Typography>
         </Box>
       )}
     </div>
@@ -35,14 +34,13 @@ function TabPanel(props) {
 function navProps(index) {
   return {
     id: `nav-tab-${index}`,
-    'aria-controls': `nav-tabpanel-${index}`,
+    "aria-controls": `nav-tabpanel-${index}`,
   };
 }
 
 function LinkTab(props) {
   return (
     <Tab
-      component="a"
       onClick={(event) => {
         event.preventDefault();
       }}
@@ -53,7 +51,7 @@ function LinkTab(props) {
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    flexGrow: 1, 
+    flexGrow: 1,
   },
 }));
 
@@ -74,12 +72,19 @@ export default function Navigation() {
           value={value}
           onChange={handleChange}
           aria-label="nav tabs example"
-          style={{backgroundColor: '#34515e'}}
+          style={{ backgroundColor: "#34515e" }}
         >
-          <LinkTab label="Javascipt funzionale" href="/linguaggi" {...navProps(0)} />
-          <LinkTab label="React framework" href="/frameworks" {...navProps(1)} />
-          <LinkTab label="Markup and Stylesheets" href="/stili" {...navProps(2)} />
-
+          <LinkTab
+            label="Javascipt funzionale"
+            href="/linguaggi"
+            {...navProps(0)}
+          />
+          <LinkTab
+            label="React framework"
+            href="/frameworks"
+            {...navProps(1)}
+          />
+          <LinkTab label="CSS" href="/css" {...navProps(2)} />
         </Tabs>
       </AppBar>
       <TabPanel value={value} index={0}>
@@ -89,7 +94,7 @@ export default function Navigation() {
         <Frameworks />
       </TabPanel>
       <TabPanel value={value} index={2}>
-        <Stili />
+        <Stylesheets />
       </TabPanel>
     </div>
   );
