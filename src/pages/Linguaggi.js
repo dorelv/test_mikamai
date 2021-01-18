@@ -1,5 +1,4 @@
 import React, { useState, memo } from "react";
-import "../cssStyles/Linguaggi.css";
 
 import { TextField, Typography, Container, makeStyles } from '@material-ui/core';
 
@@ -40,31 +39,35 @@ export const Esercizio1 = memo(({input_val}) => {
       Esercizio 1: {input_val}
     </Typography>
 
-    //<label>Esercizio 1: {input_val}</label>
-
   )
 })
 
 /////////////////////////////////////////Esercizio 2
 
-export const Esercizio2 = memo(({input_val}) => {
-
+export const Esercizio2 = ({input_val}) => {
+  
+  input_val = input_val.replace(/[\W_]+/g, " ") ////qui rimpiazzo i caratteri speciali e i doppi spazzi con uno solo per non perdere il conto delle disparità
+  
   const swapped_val = input_val.split(' ').map(
-    (sep,limit) => 
-      limit % 2 === 0 ?
-        sep.toUpperCase()
-      : 
-        sep.toLocaleLowerCase()).join(' ')
+    (sep, limit) => 
+    
+      limit % 2 ?
 
+        sep.toUpperCase()
+       
+      :
+      
+        sep.toLocaleLowerCase()
+    
+    ).join(' ')
+   
   return(
     <Typography className={useStyles().labelStyle} variant="body2">
     Esercizio 2: {swapped_val}
     </Typography>
 
-    //<label>Esercizio 2: {swapped_val}</label>
-
   )
-})
+}
 
 /////////////////////////////////////////Esercizio 3
 
@@ -84,8 +87,6 @@ export const Esercizio3 = memo(({input_val}) => {
     Esercizio 3: {shift_val}
     </Typography>
 
-    //<label>Esercizio 3: {shift_val}</label>
-
   )
 })
 
@@ -93,25 +94,17 @@ export const Esercizio3 = memo(({input_val}) => {
 
 export const Esercizio4 = memo(({input_val}) => {
 
-  var counted_obj = {}
+  input_val = input_val.replace(/[\W_]+/g, "").toLowerCase()
 
-  input_val.split('').map((sep, limit) => {
-
-    if (verificaReg(sep)) {
-      const count_obj = {[sep.toLowerCase()] : limit}
-      Object.assign(counted_obj, count_obj)
-    }
-
-    return counted_obj
+  let counted_obj =  input_val.split('').reduce((totObj, singleLetter) => {  
+      totObj[singleLetter] ? totObj[singleLetter]++ : totObj[singleLetter] = 1;
+      return totObj;
+  }, {});
   
-  })
-
   return(
     <Typography className={useStyles().labelStyle} variant="body2">
     Esercizio 4: {JSON.stringify(counted_obj)}
     </Typography>
-
-    //<label>Esercizio 4: {JSON.stringify(counted_obj)}</label>
 
   )
 })
@@ -127,8 +120,6 @@ export const Esercizio4 = memo(({input_val}) => {
     <Typography className={useStyles().labelStyle} variant="body2">
     Esercizio 5 (valore da verificare "{obiettivo}"): {JSON.stringify(is_present)}
     </Typography>
-
-    //<label>Esercizio 4: {JSON.stringify(counted_obj)}</label>
 
   )
 
@@ -156,9 +147,9 @@ export default function Linguaggi(){
 
       <TextField
           id="outlined-full-width"
-          label="Scrivi qualcosa"
+          label="Javascript functional"
           style={{ margin: 8 }}
-          placeholder="Placeholder"
+          placeholder="Stringa da elaborare"
           value={input_val.toLowerCase()}
           onChange={uppercase}
           fullWidth
@@ -179,15 +170,5 @@ export default function Linguaggi(){
 
   </React.Fragment>
 
-    /*<div className="Javascript">
-      <form className="form">
-        <input className="input" value={input_val.toLowerCase()} onChange={uppercase}/>
-        <Esercizio1 input_val={input_val}/>
-        <Esercizio2 input_val={input_val}/>
-        <Esercizio3 input_val={input_val}/>
-        <Esercizio4 input_val={input_val}/>
-        <Esercizio5 input_val={input_val} obiettivo={'a'} />  
-      </form>
-    </div>*/
   );
 }

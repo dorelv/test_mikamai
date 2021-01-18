@@ -5,7 +5,7 @@ import Linguaggi from './pages/Linguaggi'
 import Frameworks from './pages/Frameworks'
 import Stili from './pages/Stili'
 
-import {BrowserRouter as Router, Switch, Route} from 'react-router-dom'
+import {BrowserRouter as Router, Switch, Route, Redirect } from 'react-router-dom'
 
 export default function App(){
 
@@ -13,8 +13,9 @@ export default function App(){
     <Router>   
       <div className="App">
         <Nav />
-        <Switch>
-          <Route path='/' exact component={Linguaggi} />
+        <Switch>   
+          <Route exact path="/test_mikamai" component={() => (<Redirect to='/linguaggi' />)} />
+          <Route path='/linguaggi' component={Linguaggi} />
           <Route path='/frameworks' component={Frameworks} />
           <Route path='/stili' component={Stili} />
         </Switch>

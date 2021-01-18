@@ -1,13 +1,6 @@
 import React, { useState, memo, useEffect } from "react";
 import "../cssStyles/Frameworks.scss";
-
-import Typography from '@material-ui/core/Typography';
-import { makeStyles, createMuiTheme, MuiThemeProvider } from '@material-ui/core/styles';
-import Container from '@material-ui/core/Container';
-import Box from '@material-ui/core/Box';
-
-import { Checkbox, Button, Select, FormControl, InputLabel, MenuItem } from '@material-ui/core';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
+import { Checkbox, Button, Select, FormControl, InputLabel, MenuItem, Box, Container, makeStyles, FormControlLabel } from '@material-ui/core';
 
 const useStyles = makeStyles((theme) => ({
  

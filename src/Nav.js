@@ -2,7 +2,6 @@ import React from "react";
 import "./cssStyles/App.css";
 import {Link} from 'react-router-dom'
 
-
 export default function Nav(){
 
     const navStyle = {
@@ -13,7 +12,7 @@ export default function Nav(){
     return (
     <nav className='nav'>
         <ul className='nav-Links'>
-            <Link style={navStyle} to='/'>
+            <Link style={navStyle} to='/linguaggi'>
                 <h3>Linguaggi</h3>
             </Link>
             <Link style={navStyle} to='/frameworks'>
