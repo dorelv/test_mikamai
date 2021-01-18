@@ -1,0 +1,19 @@
+  .Javascipt {
+
+    font-family: sans-serif; 
+  
+  }
+  
+  .form {
+    display: flex;
+    background-color:bisque;
+    justify-content: space-around;
+    align-items: center;
+    flex-direction: column;
+  }
+  
+  .input {
+    margin-top: 5px;
+    margin-bottom: 5px;
+  }
+  

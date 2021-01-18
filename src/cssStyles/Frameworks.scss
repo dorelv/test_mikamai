@@ -1,0 +1,36 @@
+.Frameworks {
+
+    font-family: sans-serif; 
+    display: flex;
+    background-color: white;
+    flex-direction: column;
+
+
+    .single-item {
+      background-color:white;
+      margin-top: 10px;
+
+      .verificato {
+        color: green;
+        font-weight: bold;
+      }
+  
+      .nonVerificato {
+        color: red;
+      }
+      
+    }
+
+    .div-filtri {
+      margin-top: 10px;
+      margin-bottom: 10px;
+    }
+
+    
+
+
+  
+  }
+
+
+
